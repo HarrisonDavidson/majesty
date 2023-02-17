@@ -1,33 +1,49 @@
-/*
-Define a function with a single parameter. When the function
-is invoked, an argument is required.
-*/
+const queens = []
+const tributeChest = []
 
-// This function returns a string.
-
-// const athena = hailTheQueen("Athena Perez") // Argument value is "Athena Perez"
-// console.log(athena)
-
-// const charisse = hailTheQueen("Charisse Ford") // Argument value is "Charisse Ford"
-// console.log(charisse)
-
-// const jenna = hailTheQueen("Jenna Solis") // Argument value is "Jenna Solis"
-// console.log(jenna)
-
-// const erica = hailTheQueen("Erica Hall") // Argument value is "Erica Hall"
-// console.log(erica)
-
-// const caylea = hailTheQueen("Caylea Harrison") // Argument vaue is "Caylea Harrison"
-// console.log(caylea)
-
-// const ramona = hailTheQueen("Ramona")
-// console.log(ramona)
-
-const hailTheQueen = (nameString) => {
-        return `Hail Her Majesty, ${nameString}.`
+const createQueen = (queenId, queenName) => {
+    const queenObject = {
+        id: queenId,
+        name: queenName
     }
 
-for (const queenObject of queens) {
-    const hailMessage = hailTheQueen(queenObject.name)
+    queens.push(queenObject)
+}
+
+const hailTheQueen = (nameString) => {
+    return `Hail Her Majesty, ${nameString}.`
+}
+
+const payTribute = (tributeId, tributeDescription, queenId) => {
+    const tribute = {
+        id: tributeId, 
+        description: tributeDescription, 
+        queenId: queenId
+    }
+    
+    tributeChest.push(tribute)
+}
+
+createQueen(1, "Trinity Terry")
+createQueen(2, "Sydney Noh")
+createQueen(3, "Christina Ashworth")
+createQueen(4, "Aja Washington")
+
+for (const queen of queens) {
+    const hailMessage = hailTheQueen(queen.name)
     console.log(hailMessage)
 }
+
+    payTribute(1, "Barrel of wine", 2)
+    payTribute(2, "Silk", 1)
+    payTribute(3, "Bushel of oranges", 3)
+    payTribute(4, "Ten gold coins", 1)
+
+    for (const queen of queens) {
+
+    for (const tribute of tributeChest) {
+        if (tribute.queenId === queen.id) {
+        console.log(`${queen.name} has tribute ${tribute.description}`)
+    }
+}
+    }
